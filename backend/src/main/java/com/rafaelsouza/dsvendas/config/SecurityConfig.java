@@ -14,7 +14,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-
 @SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
@@ -28,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
 			http.headers().frameOptions().disable();
 		}
-		
+
 		http.cors().and().csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.authorizeRequests().anyRequest().permitAll();
