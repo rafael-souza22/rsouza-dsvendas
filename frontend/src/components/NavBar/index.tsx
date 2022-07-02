@@ -1,14 +1,21 @@
 import ImgDsDark from 'assets/img/ds-dark.svg'
+import Footer from 'components/Footer';
+import NavBar from 'components/NavBar'
 
 function Navbar() {
     return (
-        <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-light border-bottom shadow-sm">
-            <div className="container">
-                <nav className="my-2 my-md-0 mr-md-3">
-                    <img src={ImgDsDark} alt="DevSuperior" width="120" />
-                </nav>
-            </div>
-        </div>
+        <>
+        <NavBar />
+        <div className="container">
+    <div className="jumbotron">
+        <h1 className="display-4">DSVendas</h1>
+        <p className="lead">Analise o desempenho das suas vendas por diferentes perspectivas</p>
+        <hr/>
+        <p>Esta aplicação consiste em exibir um dashboard a partir de dados fornecidos por um back end construído com Spring Boot.</p>
+    </div>
+</div>
+<Footer />
+</>
     );
 }
 

@@ -1,6 +1,45 @@
-import Chart from 'react-apexcharts'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Chart from 'react-apexcharts';
+import { SaleSuccess } from 'types/Sale';
+import { round } from 'utils/format';
+import { BASE_URL } from 'utils/requests';
 
-function BarChart() {
+type SeriesData = {
+    name: string,
+    data: number[]
+}
+
+type ChartData = {
+    labels: {
+        categories: string[]
+    },
+    series: SeriesData[]
+}
+
+export default function BarChart() {
+    const [chartData, setChartData] =  useState<ChartData>({ labels: {categories: []}, series:  []});
+
+    useEffect( () => {
+        axios.get<SaleSuccess[]>(`${BASE_URL}/sales/success`)
+            .then(response => {
+                const categories = response.data.map(data => data.sellerName);
+                const series = response.data.map(data => round( (100.0 * data.deals / data.visited), 1) );
+
+                setChartData({
+                    labels: {
+                        categories: categories
+                    },
+                    series: [
+                        {
+                            name: "% Sucesso",
+                            data: series
+                        }
+                    ]
+                });
+            })
+    },[])
+
     const options = {
         plotOptions: {
             bar: {
@@ -9,27 +48,14 @@ function BarChart() {
         },
     };
 
-    const mockData = {
-        labels: {
-            categories: ['Anakin', 'Barry Allen', 'Kal-El', 'Logan', 'Padmé']
-        },
-        series: [
-            {
-                name: "% Sucesso",
-                data: [43.6, 67.1, 67.7, 45.6, 71.1]
-            }
-        ]
-    };
-
     return (
-       <Chart 
-            options={{ ...options, xaxis: mockData.labels}}
-            series={mockData.series}
-            type="bar"
-            height="240"
-       
-       />
-    );
+        <>
+            <Chart 
+                options={{...options, xaxis: chartData.labels,}}  
+                series={chartData.series}      
+                type="bar"
+                height="240"        
+            />
+        </>
+    )
 }
-
-export default BarChart;
