@@ -6,13 +6,11 @@ type PaginationProps = {
     onPageChange: Function
 }
 
-/* eslint-disable */
-
 export default function Pagination({ page, pagesList, onPageChange }: PaginationProps) {
     return (
-        < div className="row d-flex justify-content-center" >
-            <nav>
-                <ul className="d-flex justify-content-center list-unstyled">
+        < div className="pagination justify-content-center" >
+            <nav aria-label="paginas">
+                <ul className="pagination justify-content-center pagination-sm">
                     <li className={`page-item ${page.first ? 'disabled' : ''}`}>
                         <button className="page-link" onClick={() => onPageChange(page.number - 1)}>Anterior</button> 
                     </li>
