@@ -20,8 +20,8 @@ export default function Home() {
             <Header />
             <div className="container">
                 <div className="jumbotron">
-                    <h1 className="display-4">DSVendas</h1>
-                    <p className="lead">Analise o desempenho das suas vendas por diferentes perspectivas</p>
+                    <h1 className="display-4">rsouza-DSVendas</h1>
+                    <p className="lead">Relatório consolidado de vendas para insights de sua empresa!</p>
                     <hr />
                     <p>Esta aplicação consiste em exibir um dashboard a partir de dados fornecidos por um backend construído com Spring Boot.</p>
                     <Link className="btn btn-primary btn-lg" to="/dashboard">

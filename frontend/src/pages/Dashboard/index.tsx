@@ -57,17 +57,17 @@ export default function Dashboard() {
 
                 <div className="row px-3">
                     <div className="col-sm-6">
-                        <h5 className="text-center text-seocndary">Taxa de Sucesso (%)</h5>
+                        <h5 className="text-center text-seocndary">Taxa de Sucesso(%)</h5>
                         <BarChart />
                     </div>
                     <div className="col-sm-6">
-                        <h5 className="text-center text-seocndary">Total de Vendas</h5>
+                        <h5 className="text-center text-seocndary">Total de Vendas(%)</h5>
                         <DonutChart />
                     </div>
                 </div>
 
                 <div className="py-3">
-                    <h2 className="text-primary">Descrição das Vendas</h2>
+                    <h2 className="text-primary">Descrição de Vendas</h2>
                 </div>
                 <Datatable />
             </div>
