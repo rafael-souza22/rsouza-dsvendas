@@ -6,6 +6,8 @@ type PaginationProps = {
     onPageChange: Function
 }
 
+/* eslint-disable */
+
 export default function Pagination({ page, pagesList, onPageChange }: PaginationProps) {
     return (
         < div className="pagination justify-content-center" >
@@ -16,7 +18,7 @@ export default function Pagination({ page, pagesList, onPageChange }: Pagination
                     </li>
                     {
                         pagesList.map(p => (
-                            <li key={p} className={`page-item ${page.number === p ? 'disabled' : ''}`}>
+                            <li key={p} className={`page-item ${page.number == p ? 'disabled' : ''}`}>
                                 <button className="page-link" onClick={() => onPageChange(p)}>{p + 1}</button>
                             </li>
                         ))
